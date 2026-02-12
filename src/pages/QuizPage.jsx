@@ -149,7 +149,12 @@ const QuizPage = memo(() => {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
             <button
               onClick={handleNext}
-              className="px-6 sm:px-8 py-3 bg-primary text-white rounded-lg hover:bg-pink-700 transition-colors font-medium text-base order-1 sm:order-none"
+              disabled={!selectedAnswer}
+              className={`px-6 sm:px-8 py-3 rounded-lg font-medium text-base order-1 sm:order-none transition-colors ${
+                selectedAnswer
+                  ? 'bg-primary text-white hover:bg-pink-700'
+                  : 'bg-gray-300 text-white cursor-not-allowed'
+              }`}
               aria-label="Go to next question"
             >
               Next
