@@ -18,7 +18,6 @@ export const QuizProvider = ({ children }) => {
   const [userAnswers, setUserAnswers] = useState({});
   const [quizCompleted, setQuizCompleted] = useState(false);
 
-  // Memoized computed values
   const currentCategory = useMemo(
     () => selectedCategory 
       ? quizData.categories.find(cat => cat.id === selectedCategory)
@@ -36,7 +35,6 @@ export const QuizProvider = ({ children }) => {
     [currentCategory]
   );
 
-  // Memoized callbacks
   const selectCategory = useCallback((categoryId, name) => {
     setSelectedCategory(categoryId);
     setUserName(name);
@@ -102,7 +100,6 @@ export const QuizProvider = ({ children }) => {
     setQuizCompleted(false);
   }, []);
 
-  // Memoized context value - showRules removed (local to CategorySelection)
   const value = useMemo(() => ({
     userName,
     selectedCategory,

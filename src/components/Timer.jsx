@@ -6,18 +6,15 @@ const Timer = memo(({ duration = QUIZ_CONFIG.TIMER_DURATION, onTimeUp }) => {
   const onTimeUpRef = useRef(onTimeUp);
   const hasTriggeredRef = useRef(false);
 
-  // Keep callback ref updated
   useEffect(() => {
     onTimeUpRef.current = onTimeUp;
   }, [onTimeUp]);
 
-  // Reset timer when duration changes (new question via key prop)
   useEffect(() => {
     setTimeLeft(duration);
     hasTriggeredRef.current = false;
   }, [duration]);
 
-  // Single interval that runs for the entire timer lifecycle
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -30,9 +27,8 @@ const Timer = memo(({ duration = QUIZ_CONFIG.TIMER_DURATION, onTimeUp }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [duration]); // Only recreate on duration change (new question)
+  }, [duration]);
 
-  // Handle time up separately to avoid side effects in state updater
   useEffect(() => {
     if (timeLeft === 0 && !hasTriggeredRef.current) {
       hasTriggeredRef.current = true;

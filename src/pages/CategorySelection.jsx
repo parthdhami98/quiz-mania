@@ -27,7 +27,6 @@ const CategorySelection = memo(() => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
       <div className="p-4 sm:p-6">
         <h1 className="text-xl sm:text-2xl">
           <span className="text-primary">QUIZ</span>
@@ -35,7 +34,6 @@ const CategorySelection = memo(() => {
         </h1>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-2xl">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-3 sm:mb-4 text-gray-800">
@@ -55,7 +53,6 @@ const CategorySelection = memo(() => {
             </button>
           </div>
 
-          {/* Full Name Input */}
           <div className="mb-5 sm:mb-6">
             <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2 text-sm sm:text-base">
               Full name
@@ -71,7 +68,6 @@ const CategorySelection = memo(() => {
             />
           </div>
 
-          {/* Category Selection */}
           <div className="mb-6 sm:mb-8">
             <label className="block text-gray-700 font-medium mb-3 text-sm sm:text-base">
               Please select topic to continue
@@ -105,7 +101,6 @@ const CategorySelection = memo(() => {
             </Radio.Group>
           </div>
 
-          {/* Start Button */}
           <button
             onClick={handleStartQuiz}
             disabled={!selectedCategoryId || !name.trim()}
@@ -121,7 +116,6 @@ const CategorySelection = memo(() => {
         </div>
       </div>
 
-      {/* Quiz Rules Modal */}
       <Modal
         title={<span className="text-xl font-bold">Quiz Rules</span>}
         open={showRules}

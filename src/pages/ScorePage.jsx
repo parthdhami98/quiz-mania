@@ -12,13 +12,9 @@ const ScorePage = memo(() => {
     retakeQuiz 
   } = useQuiz();
 
-  // Calculate score
   const score = useMemo(() => calculateScore(), [calculateScore]);
-
-  // Performance based on score
   const isGoodScore = score.percentage >= SCORE_THRESHOLDS.GOOD;
 
-  // Redirect if quiz not completed
   useEffect(() => {
     if (!quizCompleted) {
       navigate(ROUTES.HOME);
@@ -30,19 +26,16 @@ const ScorePage = memo(() => {
     navigate(ROUTES.QUIZ);
   }, [retakeQuiz, navigate]);
 
-  // Get user initials
   const userInitials = userName ? userName.charAt(0).toUpperCase() : 'U';
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
       <div className="flex justify-between items-center p-4 sm:p-6 border-b border-gray-200">
         <h1 className="text-xl sm:text-2xl">
           <span className="text-primary">QUIZ</span>
           <span className="text-primary font-bold">Mania</span>
         </h1>
         
-        {/* User Info */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-700 flex items-center justify-center text-white font-bold text-lg">
             {userInitials}
@@ -51,10 +44,8 @@ const ScorePage = memo(() => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
         <div className="w-full max-w-xl text-center">
-          {/* Icon */}
           <div className="flex justify-center mb-6">
             {isGoodScore ? (
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-green-100 flex items-center justify-center">
@@ -69,7 +60,6 @@ const ScorePage = memo(() => {
             )}
           </div>
 
-          {/* Message */}
           {isGoodScore ? (
             <>
               <h2 className="text-2xl sm:text-3xl font-light tracking-widest text-gray-800 mb-4">
@@ -86,7 +76,6 @@ const ScorePage = memo(() => {
             </>
           )}
 
-          {/* Score Display */}
           {isGoodScore ? (
             <>
               <p className="text-gray-700 text-lg mb-2">Your Score</p>
@@ -106,7 +95,6 @@ const ScorePage = memo(() => {
             </div>
           )}
 
-          {/* Stats Box */}
           <div className="bg-background border border-gray-300 rounded-lg p-6 mb-6 inline-block">
             <p className="text-gray-800 font-medium mb-3">Out of {score.total} question</p>
             <div className="flex items-center justify-center gap-6 text-sm sm:text-base">
@@ -116,7 +104,6 @@ const ScorePage = memo(() => {
             </div>
           </div>
 
-          {/* Retake Button */}
           <div className="text-center">
             <button
               onClick={handleRetake}

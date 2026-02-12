@@ -1,16 +1,13 @@
-// Quiz Configuration Constants
 export const QUIZ_CONFIG = {
-    TIMER_DURATION: 10, // seconds per question
-    TIMER_WARNING_THRESHOLD: 3, // seconds - when to show red warning
+    TIMER_DURATION: 10,
+    TIMER_WARNING_THRESHOLD: 3,
 };
 
-// Score Performance Thresholds
 export const SCORE_THRESHOLDS = {
-    EXCELLENT: 80, // >= 80%
-    GOOD: 60, // >= 60%
+    EXCELLENT: 80,
+    GOOD: 60,
 };
 
-// Performance Messages
 export const PERFORMANCE_MESSAGES = {
     EXCELLENT: {
         title: 'Great job!',
@@ -29,7 +26,6 @@ export const PERFORMANCE_MESSAGES = {
     },
 };
 
-// Routes
 export const ROUTES = {
     HOME: '/',
     QUIZ: '/quiz',

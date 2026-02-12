@@ -3,12 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { QuizProvider } from './context/QuizContext';
 import { ROUTES } from './constants';
 
-// Lazy load page components for code splitting
 const CategorySelection = lazy(() => import('./pages/CategorySelection'));
 const QuizPage = lazy(() => import('./pages/QuizPage'));
 const ScorePage = lazy(() => import('./pages/ScorePage'));
 
-// Loading fallback component
 const LoadingFallback = () => (
   <div className="min-h-screen bg-background flex items-center justify-center">
     <div className="text-2xl">
@@ -28,7 +26,6 @@ function App() {
             <Route path={ROUTES.HOME} element={<CategorySelection />} />
             <Route path={ROUTES.QUIZ} element={<QuizPage />} />
             <Route path={ROUTES.SCORE} element={<ScorePage />} />
-            {/* Catch-all: redirect unknown routes to home */}
             <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
           </Routes>
         </Suspense>

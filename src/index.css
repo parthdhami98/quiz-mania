@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Override Ant Design Radio button colors with primary theme color */
 .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
   border-color: #C13584 !important;
   background-color: #C13584 !important;
@@ -18,7 +17,6 @@
   border-color: #C13584 !important;
 }
 
-/* Ensure checked state has primary color */
 .ant-radio-checked::after {
   border-color: #C13584 !important;
 }

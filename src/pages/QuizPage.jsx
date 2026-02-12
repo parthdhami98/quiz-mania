@@ -20,21 +20,18 @@ const QuizPage = memo(() => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const prevQuestionIndexRef = useRef(currentQuestionIndex);
 
-  // Redirect if no category selected
   useEffect(() => {
     if (!selectedCategory) {
       navigate(ROUTES.HOME);
     }
   }, [selectedCategory, navigate]);
 
-  // Redirect to score page when quiz is completed
   useEffect(() => {
     if (quizCompleted) {
       navigate(ROUTES.SCORE);
     }
   }, [quizCompleted, navigate]);
 
-  // Reset selected answer only when question index actually changes
   useEffect(() => {
     if (prevQuestionIndexRef.current !== currentQuestionIndex) {
       setSelectedAnswer('');
@@ -75,7 +72,6 @@ const QuizPage = memo(() => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 p-4 sm:p-6">
         <h1 className="text-xl sm:text-2xl">
           <span className="text-primary">QUIZ</span>
@@ -90,10 +86,8 @@ const QuizPage = memo(() => {
         </button>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         <div className="max-w-3xl mx-auto">
-          {/* Progress and Timer */}
           <div className="flex justify-between items-center mb-4 sm:mb-6">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold">
@@ -108,7 +102,6 @@ const QuizPage = memo(() => {
             />
           </div>
 
-          {/* Progress Bar */}
           <div className="w-full bg-gray-200 h-2 rounded-full mb-6 sm:mb-8" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
             <div
               className="bg-primary h-2 rounded-full transition-all duration-300"
@@ -116,13 +109,11 @@ const QuizPage = memo(() => {
             />
           </div>
 
-          {/* Question */}
           <div className="mb-6 sm:mb-8">
             <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6">
               {currentQuestionIndex + 1}. {currentQuestion.question}
             </h3>
 
-            {/* Options */}
             <Radio.Group
               value={selectedAnswer}
               onChange={(e) => handleAnswerChange(e.target.value)}
@@ -131,7 +122,7 @@ const QuizPage = memo(() => {
               <div className="space-y-3 sm:space-y-4">
                 {currentQuestion.options.map((option, index) => {
                   const optionLetter = option.charAt(0);
-                  const optionText = option.substring(3); // Remove "A. " prefix
+                  const optionText = option.substring(3);
 
                   return (
                     <div
@@ -155,7 +146,6 @@ const QuizPage = memo(() => {
             </Radio.Group>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
             <button
               onClick={handleNext}
