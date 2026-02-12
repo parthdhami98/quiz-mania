@@ -72,7 +72,7 @@ const QuizPage = memo(() => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 p-4 sm:p-6">
+      <div className="flex justify-between items-center p-4 sm:p-6">
         <h1 className="text-xl sm:text-2xl">
           <span className="text-primary">QUIZ</span>
           <span className="text-primary font-bold">Mania</span>
@@ -155,9 +155,9 @@ const QuizPage = memo(() => {
                   ? 'bg-primary text-white hover:bg-pink-700'
                   : 'bg-gray-300 text-white cursor-not-allowed'
               }`}
-              aria-label="Go to next question"
+              aria-label={currentQuestionIndex + 1 >= totalQuestions ? 'Finish the quiz' : 'Go to next question'}
             >
-              Next
+              {currentQuestionIndex + 1 >= totalQuestions ? 'Finish' : 'Next'}
             </button>
             <button
               onClick={handleSkip}
